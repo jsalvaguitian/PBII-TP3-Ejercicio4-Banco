@@ -436,7 +436,7 @@ public class BancoTest {
 	}
 
 	/*
-	 * Un Cliente es VIP con un saldo mayor a un 1.000.000 y sin ninguna cuenta con
+	 * Un Cliente es VIP con  una sumatoria de saldo mayor a $ 1.000.000  y sin ninguna cuenta con
 	 * saldo negativo
 	 * 
 	 * Se solicita tener disponible la lista de clientes VIP.
@@ -444,6 +444,9 @@ public class BancoTest {
 
 	@Test //No me funciona el test
 	public void queUnClienteSeaVIPSiSaldoEsMayorAUnMillon() {
+		String datosClientesVIPs = "\nNombre: Homero"
+								+ "\nApellido: Simpson"
+								+ "\nCUIL: 28279070057";
 		// Preparacion de datos
 		final String NOMBRE_BANCO = "BANCO DE LA CIUDAD DE BUENOS AIRES";
 		final Long CUIT = 30999032083L;
@@ -496,13 +499,12 @@ public class BancoTest {
 		banco.agregarCuenta(unaCuentaVip);
 		banco.agregarCuenta(otraCuentaVip);
 		
-		//System.out.println("Una cuenta no vip tiene saldo "+unaCuentaNoVip.getSaldo()); //-105.0
 		
 		
 		// -----------------------------------
 
-		//No me funciona :-(
-		assertEquals("",banco.consultarLaListaDeClientesVIP());
+		//Solucionado
+		assertEquals(datosClientesVIPs,banco.consultarLaListaDeClientesVIP());
 
 	}
 

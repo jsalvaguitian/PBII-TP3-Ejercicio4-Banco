@@ -101,10 +101,9 @@ public class Banco {
 		String informacionDelosClientesVIPs = "";
 		if(!clientesVIPs.isEmpty()) {
 			for(ClienteVIP unVIP : clientesVIPs) {
-				informacionDelosClientesVIPs += "\nNombre : " + unVIP.getNombre() 
+				informacionDelosClientesVIPs += "\nNombre: " + unVIP.getNombre() 
 										+ "\nApellido: " + unVIP.getApellido()
-										+ "\nCUIL: " + unVIP.getCuil()
-										+"\n";
+										+ "\nCUIL: " + unVIP.getCuil();
 			}
 			
 		}
@@ -129,7 +128,11 @@ public class Banco {
 			}
 			
 			if(sumatoriaDeSaldos > SALDO_TOTAL_VIP_MINIMO && contadorDeCuentasConSaldoPositivo == unCliente.getCuentas().size()) {
-				ClienteVIP vip = (ClienteVIP) unCliente;
+				ClienteVIP vip = new ClienteVIP(unCliente.getNombre(), unCliente.getApellido(), unCliente.getCuil(), unCliente.getPin());
+				vip.setCuentas(unCliente.getCuentas());
+				
+				clientesVIPs.remove(unCliente);
+				
 				clientesVIPs.add(vip);
 				
 			}else {

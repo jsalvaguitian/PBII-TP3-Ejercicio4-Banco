@@ -4,12 +4,12 @@ import java.util.HashSet;
 
 public class Cliente {
 	
-	private String nombre;
-	private String apellido;
+	protected String nombre;
+	protected String apellido;
 	private Long cuil;
 	private Integer pin;
-	private Boolean inicioSesion;
-	private HashSet<Cuenta>cuentas;
+	protected Boolean inicioSesion;
+	protected HashSet<Cuenta>cuentas;
 	
 	public Cliente(String nombre, String apellido, Long cuil, Integer pin) {
 		this.nombre = nombre;
@@ -87,6 +87,10 @@ public class Cliente {
 
 	public HashSet<Cuenta> getCuentas() {
 		return cuentas;
+	}
+
+	public void setCuentas(HashSet<Cuenta> cuentas) {
+		this.cuentas = cuentas;
 	}
 	
 	
